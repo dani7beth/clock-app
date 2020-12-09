@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 export default class Clock extends React.Component{
 
@@ -17,11 +17,11 @@ export default class Clock extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState){
-        const {counter} = this.state;
+        // const {counter} = this.state;
 
-        if(counter >= 10) {
-            this.setState({counter: counter + 1});
-        }
+        // if(counter >= 10) {
+        //     this.setState({counter: counter + 1});
+        // }
         console.log("component did update called");
         
         console.log(prevProps);
@@ -39,7 +39,7 @@ export default class Clock extends React.Component{
             <>
                 <Header as="h3">Clock</Header>
                 <p>{date.toLocaleTimeString()}</p>
-                <p>{counter}</p>
+                {/* <p>{counter}</p> */}
             </>
         )
     }
