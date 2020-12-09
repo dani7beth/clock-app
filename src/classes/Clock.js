@@ -3,7 +3,7 @@ import { Button, Header } from 'semantic-ui-react';
 
 export default class Clock extends React.Component{
 
-    state = {date: new Date()};
+    state = {date: new Date(), counter: 0};
     
     
     componentDidMount(){
@@ -16,17 +16,30 @@ export default class Clock extends React.Component{
         clearInterval(this.ticker);
     }
 
+    componentDidUpdate(prevProps, prevState){
+        const {counter} = this.state;
+
+        if(counter >= 10) {
+            this.setState({counter: counter + 1});
+        }
+        console.log("component did update called");
+        
+        console.log(prevProps);
+        console.log(prevState);
+    }
+
     tick = () =>{
         this.setState({date: new Date()})
     }
 
     render (){
-        const {showClock, date} = this.state;
+        const {date, counter} = this.state;
         console.log("render called");
         return(
             <>
                 <Header as="h3">Clock</Header>
                 <p>{date.toLocaleTimeString()}</p>
+                <p>{counter}</p>
             </>
         )
     }
